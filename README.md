@@ -12,15 +12,15 @@ Helpful DLP SQL Scripts
 
 - [Creating a SQL Report for DLP Scan History](https://www.symantec.com/connect/articles/creating-sql-report-dlp-scan-history)
 
-  - [DLP History Scan](scripts\DLPHistoryScan.sql)
+  - [DLP History Scan](scripts/DLPHistoryScan.sql)
 
 - [SQL Query to show Estate-Wide Discover Scan Data](https://www.symantec.com/connect/articles/sql-query-show-estate-wide-discover-scan-data)
 
-  - [Estate Discover Scan](scripts\TotalEstateScanned.sql)
+  - [Estate Discover Scan](scripts/TotalEstateScanned.sql)
 
 
 - Upcoming Articles
-    - [Rule Violation Count](scripts\RuleViolationCount.sql)
-    - [Average Speeds](scripts\AverageAverageSpeed.sql)
+    - [Rule Violation Count](scripts/RuleViolationCount.sql)
+    - [Average Speeds](scripts/AverageAverageSpeed.sql)
 
 See a copy in the [WIKI](https://github.com/Protirus/Symantec-DLP-SQL/wiki).
