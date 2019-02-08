@@ -22,9 +22,10 @@ Helpful DLP SQL Scripts
 - [SQL Query to Show Violations of Specific Rules - Discover](https://www.symantec.com/connect/articles/sql-query-show-violations-specific-rules-discover?list_context_id=3667881&list_context_type=symantec_product)
     - [Rule Violation Count](scripts/RuleViolationCount.sql)
 
-
-- Upcoming Articles
-    -
-    - [Average Speeds](scripts/AverageAverageSpeed.sql)
+   
+    
+- [SQL Query for Average Scan Speed Across Whole Estate – Discover](https://www.symantec.com/connect/articles/sql-query-average-scan-speed-across-whole-estate-discover-0)
+    
+    - [Average Estate Scan Speed](scripts/AverageAverageSpeed.sql)
 
 See a copy in the [WIKI](https://github.com/Protirus/Symantec-DLP-SQL/wiki).
