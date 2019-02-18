@@ -30,6 +30,6 @@ Helpful DLP SQL Scripts
 
 - [SQL Query for Server Settings and Values - Enforce Console](https://www.symantec.com/connect/articles/sql-query-showing-server-settings-and-values-enforce-console)
 
-    -[Server Setting Enforce](scripts/ServerSettingsEnforce.sql)
+    - [Server Setting Enforce](scripts/ServerSettingsEnforce.sql)
 
 See a copy in the [WIKI](https://github.com/Protirus/Symantec-DLP-SQL/wiki).
