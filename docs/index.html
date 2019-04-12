@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Symantec DLP SQL</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" type="text/css" href="css/syntaxhighlighter/shCore.css" />
+    <link rel="stylesheet" type="text/css" href="css/syntaxhighlighter/shThemeDefault.css" />
+</head>
+
+<body ng-app="app">
+
+    <div ng-controller="MainCtrl" data-ng-init="init()">
+        <main>
+            Symantec DLP SQL
+        </main>
+
+        <div>
+            <p ng-repeat="file in files"
+                ng-click="loadFile(file)"
+            >
+                {{file.fileName}}
+            </p>
+        </div>
+
+        <pre id="code" class="brush: js">
+        function foo()
+        {
+            var x = document.getelementbyid("a");
+        }
+        </pre>
+
+        <pre class="brush: sql">
+        SELECT
+        AVG(TRUNC((TRUNC(BYTESSCANNED*1e-9,2) ) / NULLIF(ELAPSEDTIME, 0) * 3600000,2)) AVG_AVG
+        FROM WALK
+        WHERE BYTESSCANNED NOT LIKE '0' 
+        AND ELAPSEDTIME NOT LIKE '0'
+        AND TRUNC((TRUNC(BYTESSCANNED*1e-9,2) ) / NULLIF(ELAPSEDTIME, 0) * 3600000,2) NOT LIKE '0';
+        </pre>
+    </div>
+
+    <script src="js/jquery-3.3.1.min.js" ></script>
+    <script>window.jQuery || document.write('<script src="js/jquery-slim.min.js"><\/script>')</script>
+    <script src="js/jquery-ui.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/angular.min.js"></script>
+
+    <script type="text/javascript" src="js/app.js"></script>
+    <script type="text/javascript" src="js/syntaxhighlighter/shCore.js"></script>
+    <script type="text/javascript" src="css/syntaxhighlighter/shBrushJScript.js"></script>
+    <script type="text/javascript" src="css/syntaxhighlighter/shBrushCss.js"></script>
+    <script type="text/javascript" src="css/syntaxhighlighter/shBrushCSharp.js"></script>
+    <script type="text/javascript" src="css/syntaxhighlighter/shBrushSql.js"></script>
+    <script type="text/javascript" src="css/syntaxhighlighter/shBrushPowerShell.js"></script>
+    
+    <script type="text/javascript">
+        SyntaxHighlighter.all()
+    </script>
+</body>
+</html>
