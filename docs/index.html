@@ -6,8 +6,8 @@
     <title>Symantec DLP SQL</title>
 
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" type="text/css" href="css/syntaxhighlighter/shCore.css" />
-    <link rel="stylesheet" type="text/css" href="css/syntaxhighlighter/shThemeDefault.css" />
+    <link rel="stylesheet" href="css/rainbow.css" type="text/css">
+    <link rel="stylesheet" href="js/themes/default/style.min.css" />
 </head>
 
 <body ng-app="app">
@@ -17,29 +17,41 @@
             Symantec DLP SQL
         </main>
 
-        <div>
-            <p ng-repeat="file in files"
-                ng-click="loadFile(file)"
-            >
-                {{file.fileName}}
-            </p>
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-4">
+
+                    <div id="jstree">
+                        <!-- in this example the tree is populated from inline HTML
+                        <ul>
+                            <li>Root node 1
+                            <ul>
+                                <li id="child_node_1">Child node 1</li>
+                                <li>Child node 2</li>
+                            </ul>
+                            </li>
+                            <li>Root node 2</li>
+                        </ul> -->
+                    </div>
+
+                    <div>
+                        <p ng-repeat="file in files"
+                            ng-click="loadFile(file)"
+                        >
+                            {{file.fileName}}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <!-- Dynamically add the script from the choice -->
+                    <div id="script"></div>
+                </div>
+                </div>
+            </div>
+
         </div>
 
-        <pre id="code" class="brush: js">
-        function foo()
-        {
-            var x = document.getelementbyid("a");
-        }
-        </pre>
-
-        <pre class="brush: sql">
-        SELECT
-        AVG(TRUNC((TRUNC(BYTESSCANNED*1e-9,2) ) / NULLIF(ELAPSEDTIME, 0) * 3600000,2)) AVG_AVG
-        FROM WALK
-        WHERE BYTESSCANNED NOT LIKE '0' 
-        AND ELAPSEDTIME NOT LIKE '0'
-        AND TRUNC((TRUNC(BYTESSCANNED*1e-9,2) ) / NULLIF(ELAPSEDTIME, 0) * 3600000,2) NOT LIKE '0';
-        </pre>
     </div>
 
     <script src="js/jquery-3.3.1.min.js" ></script>
@@ -47,18 +59,21 @@
     <script src="js/jquery-ui.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/angular.min.js"></script>
+    <script src="js/rainbow-custom.min.js"></script>
+    <script src="js/jstree.min.js"></script>
 
     <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="js/syntaxhighlighter/shCore.js"></script>
-    <script type="text/javascript" src="css/syntaxhighlighter/shBrushJScript.js"></script>
-    <script type="text/javascript" src="css/syntaxhighlighter/shBrushCss.js"></script>
-    <script type="text/javascript" src="css/syntaxhighlighter/shBrushCSharp.js"></script>
-    <script type="text/javascript" src="css/syntaxhighlighter/shBrushSql.js"></script>
-    <script type="text/javascript" src="css/syntaxhighlighter/shBrushPowerShell.js"></script>
-    
-    <script type="text/javascript">
-        SyntaxHighlighter.all();
-        //SyntaxHighlighter.highlight();
+
+    <script>
+        $(function () { $('#jstree').jstree(); });
+        $('#jstree').on("changed.jstree", function (e, data) {
+            console.log(data.selected);
+        });
+        $('button').on('click', function () {
+            $('#jstree').jstree(true).select_node('child_node_1');
+            $('#jstree').jstree('select_node', 'child_node_1');
+            $.jstree.reference('#jstree').select_node('child_node_1');
+        });
     </script>
 </body>
 </html>

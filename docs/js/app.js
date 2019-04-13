@@ -25,19 +25,26 @@ app.controller('MainCtrl', ['$scope', '$http', '$filter',
                             $scope.files.push(item);
                         }
                     });
+
+                    // var jsondata = $scope.files.map(f => ({id: f.fileName, parent: "#", text: f.name}));
+                    // console.log('jsondata', jsondata);
+                    // //jsondata = [{"id": "ajson1", "parent": "#", "text": "Simple root node"}];
+        
+                    // // $('#jstree').jstree({
+                    // //     'core': {
+                    // //         'data': jsondata
+                    // //     }
+                    // // });
+                    // $('#jstree').jstree(true).settings.core.data = jsondata;
+                    // $('#jstree').jstree(true).redraw(true);
                 }
             );
+
         };
 
         $scope.loadFile = (file) => {
-            console.log(file);
             var fileName = file.name.split('.').slice(0, -1).join('.');
             var ext = file.name.substr(file.name.lastIndexOf('.')+1);
-            console.log('fileName',fileName);
-            console.log('ext',ext);
-
-            var code = document.getElementById("code");
-            code.className = "brush: " + ext;
             
             var url = "https://raw.githubusercontent.com/Protirus/Symantec-DLP-SQL/master/scripts/" + file.name;
 
@@ -51,9 +58,11 @@ app.controller('MainCtrl', ['$scope', '$http', '$filter',
 
             $http(req)
                 .then(function(response) {
-                    $('#code').text(response.data);
-                    SyntaxHighlighter.highlight();
-                    //$scope.$apply();
+                    $scope.script = response.data;
+                    var div = $('<div><pre><code data-language="' + ext + '">'+ $scope.script +'</code></pre></div>');
+                    Rainbow.color(div[0], function() {
+                        $("#script").empty().append(div[0]);
+                    });
                 }
             );
         };
@@ -66,32 +75,3 @@ app.controller('MainCtrl', ['$scope', '$http', '$filter',
     }
 ]
 );
-
-// http://jsfiddle.net/davidchase03/u54Kh/
-app.directive('markdown', function () {
-    var converter = new Showdown.converter();
-    return {
-        restrict: 'A',
-        link: function (scope, element, attrs) {
-            var htmlText = converter.makeHtml(element.text());
-            element.html(htmlText);
-
-            // function renderMarkdown() {
-            //     var htmlText = converter.makeHtml(scope.$eval(attrs.markdown) || '');
-            //     element.html(htmlText);
-            // }
-            // scope.$watch(attrs.markdown, renderMarkdown);
-            // renderMarkdown();
-            // scope.$watch('val', function(newValue, oldValue) {
-            //     if (newValue)
-            //         console.log("I see a data change!");
-            // }, true);
-        }
-    };
-});
-
-app.filter('trusted', ['$sce', function ($sce) {
-    return function(url) {
-        return $sce.trustAsResourceUrl(url);
-    };
-}]);
