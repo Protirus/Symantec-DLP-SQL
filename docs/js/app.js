@@ -43,6 +43,7 @@ app.controller('MainCtrl', ['$scope', '$http', '$filter',
         };
 
         $scope.loadFile = (file) => {
+            $scope.selectedFile = file;
             var fileName = file.name.split('.').slice(0, -1).join('.');
             var ext = file.name.substr(file.name.lastIndexOf('.')+1);
             

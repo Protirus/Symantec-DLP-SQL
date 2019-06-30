@@ -5,8 +5,11 @@
 
     <title>Symantec DLP SQL</title>
 
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/rainbow.css" type="text/css">
     <link rel="stylesheet" href="js/themes/default/style.min.css" />
@@ -16,7 +19,7 @@
 
     <div ng-controller="MainCtrl" data-ng-init="init()">
         <main>
-            Symantec DLP SQL
+            <h1>Symantec DLP SQL</h1>
         </main>
 
         <div class="container">
@@ -35,9 +38,9 @@
             </div>
 
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-2">
 
-                    <div id="jstree">
+                    <!-- <div id="jstree"> -->
                         <!-- in this example the tree is populated from inline HTML
                         <ul>
                             <li>Root node 1
@@ -48,17 +51,18 @@
                             </li>
                             <li>Root node 2</li>
                         </ul> -->
-                    </div>
+                    <!-- </div> -->
 
                     <div>
                         <p ng-repeat="file in files | filter:searchText"
                             ng-click="loadFile(file)"
+                            ng-class="{'active':selectedFile === file}"
                         >
                             {{file.fileName}}
                         </p>
                     </div>
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-10">
                     <!-- Dynamically add the script from the choice -->
                     <div id="script"></div>
                 </div>
